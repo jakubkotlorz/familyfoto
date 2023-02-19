@@ -5,15 +5,27 @@
 body {margin:25px;}
 
 div.foto {
-  width: 80%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 25px;
+  margin-right: 10px;
+  float: left;
+  width: 400px;
+  border: 1px solid #333;
+}
+
+div.foto:hover {
+  border: 1px solid #aaa;
+}
+
+div.foto img {
+  width: 100%;
+  height: auto;
 }
 
 div.container {
   text-align: center;
-  padding: 10px 20px;
+  padding: 8px 12px;
 }
 </style>
 </head>
@@ -21,12 +33,16 @@ div.container {
 
 <h2>Header</h2>
 
-{% for photo_source in images %}
+{% for item in images %}
 <div class="foto">
-  <img src="{{ photo_source }}" alt="" style="width:100%">
+  <img src="{{ item.get_image_url }}" alt="" width="400" height="300">
   <div class="container">
-  <p>Text</p>
+  <p>{{ item.title }}</p>
   </div>
+</div>
+{% empty %}
+<div class="">
+  <p>No images yet!</p>
 </div>
 {% endfor %}
 
