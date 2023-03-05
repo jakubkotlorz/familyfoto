@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {margin:25px;}
+</style>
+</head>
+<body>
+
+<h2>Add Foto</h2>
+{% if foto_sent %}<h3>Foto added sucessfully</h3>{% endif %}
+{{ form.errors }}
+
+<form method="post" enctype="multipart/form-data">
+  {{ form.as_p }}
+  {% csrf_token %}
+  <input type="submit" value="Add">
+</form>
+
+<div class="">
+    <p>
+      <a href="{% url 'index' %}">Go back to main page...</a>
+    </p>
+  </div>
+
+</body>
+</html>

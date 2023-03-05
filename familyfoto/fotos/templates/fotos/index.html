@@ -37,7 +37,7 @@ div.container {
 <div class="foto">
   <img src="{{ item.get_image_url }}" alt="" width="400" height="300">
   <div class="container">
-  <p>{{ item.title }}</p>
+  <p>{{ item.title|default:item.get_image_url }}</p>
   </div>
 </div>
 {% empty %}
@@ -45,6 +45,11 @@ div.container {
   <p>No images yet!</p>
 </div>
 {% endfor %}
+<div class="">
+  <p>
+    <a href="{% url 'add-foto' %}">Add another Foto...</a>
+  </p>
+</div>
 
 </body>
 </html>
